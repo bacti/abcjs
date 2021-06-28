@@ -32,11 +32,12 @@ Svg.prototype.setResponsiveWidth = function(w, h) {
 	// this technique is from: http://thenewcode.com/744/Make-SVG-Responsive, thx to https://github.com/iantresman
 	this.svg.setAttribute("viewBox", "0 0 " + w + " " + h);
 	this.svg.setAttribute("preserveAspectRatio", "xMinYMin meet");
+	this.svg.setAttribute("id", "music-sheet");
 	this.svg.removeAttribute("height");
 	this.svg.removeAttribute("width");
 	this.svg.style['display'] = "inline-block";
 	this.svg.style['position'] = "absolute";
-	this.svg.style['top'] = "0";
+	// this.svg.style['top'] = "0";
 	this.svg.style['left'] = "0";
 
 	if (this.svg.parentNode) {
