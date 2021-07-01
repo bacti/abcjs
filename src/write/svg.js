@@ -47,7 +47,7 @@ Svg.prototype.setResponsiveWidth = function(w, h) {
 		else if (cls.indexOf("abcjs-container") < 0)
 			this.svg.parentNode.setAttribute("class", cls + " abcjs-container");
 		this.svg.parentNode.style['display'] = "inline-block";
-		this.svg.parentNode.style['position'] = "relative";
+		this.svg.parentNode.style['position'] = "fixed";
 		this.svg.parentNode.style['width'] = "100%";
 		// PER: I changed the padding from 100% to this through trial and error.
 		// The example was using a square image, but this music might be either wider or taller.
