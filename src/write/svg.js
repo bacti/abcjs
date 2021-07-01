@@ -39,6 +39,7 @@ Svg.prototype.setResponsiveWidth = function(w, h) {
 	this.svg.style['position'] = "absolute";
 	// this.svg.style['top'] = "0";
 	this.svg.style['left'] = "0";
+	this.svg.style['transition'] = 'all ease-in-out 0.3s';
 
 	if (this.svg.parentNode) {
 		var cls = this.svg.parentNode.getAttribute("class");
