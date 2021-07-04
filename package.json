@@ -42,6 +42,7 @@
   },
   "homepage": "https://abcjs.net",
   "devDependencies": {
+    "kha-app": "file:../kha-app",
     "@babel/core": "7.13.15",
     "@babel/preset-env": "7.13.15",
     "@tarp/require": "1.4.3",
