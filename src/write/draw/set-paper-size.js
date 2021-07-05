@@ -24,19 +24,20 @@ function setPaperSize(renderer, maxwidth, scale, responsive) {
 	];
 	renderer.paper.insertStyles(".abcjs-dragging-in-progress text, .abcjs-dragging-in-progress tspan {" + styles.join(" ") + "}");
 
-	var parentStyles = { overflow: "hidden" };
+	const s = document.body.clientWidth / w;
+	var parentStyles = { overflow: 'hidden', position: 'fixed', width: '100%' };
 	if (responsive === 'resize') {
 		renderer.paper.setResponsiveWidth(w, h);
 	} else {
-		parentStyles.width = "";
-		parentStyles.height = h + "px";
+		parentStyles.width = '100%';
+		parentStyles.height = h * s + "px";
 		if (scale < 1) {
 			parentStyles.width = w + "px";
 			renderer.paper.setSize(w / scale, h / scale);
 		} else
 			renderer.paper.setSize(w, h);
 	}
-	renderer.paper.setScale(scale);
+	renderer.paper.setScale(s);
 	renderer.paper.setParentStyles(parentStyles);
 }
 

@@ -60,6 +60,8 @@ Svg.prototype.setResponsiveWidth = function(w, h) {
 };
 
 Svg.prototype.setSize = function(w, h) {
+	this.svg.style['position'] = 'absolute';
+	this.svg.style['transition'] = 'all ease-in-out 0.3s';
 	this.svg.setAttribute('width', w);
 	this.svg.setAttribute('height', h);
 };
