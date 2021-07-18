@@ -27,7 +27,7 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-//function str_repeat(i, m) { for (var o = []; m > 0; o[--m] = i); return(o.join('')); }
+function str_repeat(i, m) { for (var o = []; m > 0; o[--m] = i); return(o.join('')); }
 
 var sprintf = function() {
   var i = 0, a, f = arguments[i++], o = [], m, p, c, x;

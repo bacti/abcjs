@@ -3,7 +3,7 @@
 // instrument = the instrument name (e.g. "acoustic_grand_piano")
 // name = the pitch name (e.g. "A3")
 var soundsCache = require('./sounds-cache');
-const { Asset } = require('kha-app/src/common/asset.ts');
+const { Asset } = require('../../../common/asset.ts');
 
 var getNote = (url, instrument, name, audioContext) => {
   return new Promise(async (resolve) => {
