@@ -169,6 +169,7 @@ function SynthController() {
 
 	self.pause = function() {
 		if (self.timer) {
+			self.cursorControl.onPause && self.cursorControl.onPause();
 			self.timer.pause();
 			self.midiBuffer.pause();
 			if (self.control)
