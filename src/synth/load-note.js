@@ -5,7 +5,7 @@
 var soundsCache = require('./sounds-cache');
 const { Asset } = require('../../../common/asset.ts');
 
-var getNote = (url, instrument, name, audioContext) => {
+export default function getNote(url, instrument, name, audioContext) {
   return new Promise(async (resolve) => {
     const buffer = await Asset.fetch(
       `midi-js-soundfonts/${instrument}-mp3/${name}.mp3`,
@@ -17,6 +17,4 @@ var getNote = (url, instrument, name, audioContext) => {
     soundsCache[instrument][name] = audioBuffer;
     return resolve();
   });
-};
-
-module.exports = getNote;
+}
