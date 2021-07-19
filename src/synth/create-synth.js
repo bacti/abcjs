@@ -1,4 +1,4 @@
-var getNote = require('./load-note');
+var { getNote } = require('./load-note');
 var createNoteMap = require('./create-note-map');
 var registerAudioContext = require('./register-audio-context');
 var activeAudioContext = require('./active-audio-context');
@@ -17,7 +17,7 @@ var defaultSoundFontUrl = "https://paulrosen.github.io/midi-js-soundfonts/abcjs/
 var alternateSoundFontUrl = "https://paulrosen.github.io/midi-js-soundfonts/FluidR3_GM/";
 var alternateSoundFontUrl2 = "https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/";
 
-function CreateSynth() {
+export const CreateSynth = function () {
 	var self = this;
 	self.audioBufferPossible = undefined;
 	self.directSource = []; // type: AudioBufferSourceNode
@@ -435,6 +435,4 @@ function CreateSynth() {
 			};
 		}
 	};
-}
-
-module.exports = CreateSynth;
+};

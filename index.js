@@ -22,7 +22,7 @@ abcjs.TimingCallbacks = require('./src/api/abc_timing_callbacks');
 var glyphs = require('./src/write/abc_glyphs');
 abcjs.setGlyph = glyphs.setSymbol;
 
-var CreateSynth = require('./src/synth/create-synth');
+var { CreateSynth } = require('./src/synth/create-synth');
 var instrumentIndexToName = require('./src/synth/instrument-index-to-name');
 var pitchToNoteName = require('./src/synth/pitch-to-note-name');
 var SynthSequence = require('./src/synth/synth-sequence');

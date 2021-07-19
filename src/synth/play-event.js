@@ -1,5 +1,5 @@
 var SynthSequence = require('./synth-sequence');
-var CreateSynth = require('./create-synth');
+var { CreateSynth } = require('./create-synth');
 var activeAudioContext = require("./active-audio-context");
 
 function playEvent(midiPitches, midiGracePitches, millisecondsPerMeasure) {

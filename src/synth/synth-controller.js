@@ -1,5 +1,5 @@
 var CreateSynthControl = require('./create-synth-control');
-var CreateSynth = require('./create-synth');
+var { CreateSynth } = require('./create-synth');
 var TimingCallbacks = require('../api/abc_timing_callbacks');
 var activeAudioContext = require('./active-audio-context');
 
