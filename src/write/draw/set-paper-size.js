@@ -25,7 +25,7 @@ function setPaperSize(renderer, maxwidth, scale, responsive) {
 	renderer.paper.insertStyles(".abcjs-dragging-in-progress text, .abcjs-dragging-in-progress tspan {" + styles.join(" ") + "}");
 
 	const s = document.body.clientWidth / w;
-	var parentStyles = { overflow: 'hidden', position: 'fixed', width: '100%' };
+	var parentStyles = { overflow: 'hidden', position: 'fixed', width: '100%', backgroundColor: '#F4CB7D' };
 	if (responsive === 'resize') {
 		renderer.paper.setResponsiveWidth(w, h);
 	} else {
