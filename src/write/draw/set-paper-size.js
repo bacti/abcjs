@@ -37,7 +37,7 @@ function setPaperSize(renderer, maxwidth, scale, responsive) {
     renderer.paper.setResponsiveWidth(w, h);
   } else {
     parentStyles.width = '100%';
-    parentStyles.height = h * s + 'px';
+    parentStyles.height = '100%'; // h * s + 'px';
     if (scale < 1) {
       parentStyles.width = w + 'px';
       renderer.paper.setSize(w / scale, h / scale);
