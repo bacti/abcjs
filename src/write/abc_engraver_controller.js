@@ -30,7 +30,7 @@ var calcHeight = require('./calcHeight');
  * in the renderer for highlighting purposes
  *
  */
-var EngraverController = function(paper, params) {
+var EngraverController = function (paper, params) {
   params = params || {};
   this.selectionColor = params.selectionColor;
   this.dragColor = params.dragColor ? params.dragColor : params.selectionColor;
@@ -85,7 +85,7 @@ EngraverController.prototype.reset = function() {
 /**
  * run the engraving process
  */
-EngraverController.prototype.engraveABC = function(abctunes, tuneNumber) {
+EngraverController.prototype.engraveABC = function (abctunes, tuneNumber) {
   if (abctunes[0]===undefined) {
     abctunes = [abctunes];
   }
@@ -104,27 +104,27 @@ EngraverController.prototype.engraveABC = function(abctunes, tuneNumber) {
  * Some of the items on the page are not scaled, so adjust them in the opposite direction of scaling to cancel out the scaling.
  */
 EngraverController.prototype.adjustNonScaledItems = function (scale) {
-	this.width /= scale;
-	this.renderer.adjustNonScaledItems(scale);
+  this.width /= scale;
+  this.renderer.adjustNonScaledItems(scale);
 };
 
-EngraverController.prototype.getMeasureWidths = function(abcTune) {
-	this.reset();
-	this.getFontAndAttr = new GetFontAndAttr(abcTune.formatting, this.classes);
-	this.getTextSize = new GetTextSize(this.getFontAndAttr, this.renderer.paper);
+EngraverController.prototype.getMeasureWidths = function (abcTune) {
+  this.reset();
+  this.getFontAndAttr = new GetFontAndAttr(abcTune.formatting, this.classes);
+  this.getTextSize = new GetTextSize(this.getFontAndAttr, this.renderer.paper);
 
-	this.setupTune(abcTune, 0);
-	this.constructTuneElements(abcTune);
-	// layout() sets the x-coordinate of the abcTune element here:
-	// abcTune.lines[0].staffGroup.voices[0].children[0].x
-	layout(this.renderer, abcTune, 0, this.space);
+  this.setupTune(abcTune, 0);
+  this.constructTuneElements(abcTune);
+  // layout() sets the x-coordinate of the abcTune element here:
+  // abcTune.lines[0].staffGroup.voices[0].children[0].x
+  layout(this.renderer, abcTune, 0, this.space);
 
-	var ret = [];
-	var section;
+  var ret = [];
+  var section;
 
-	var needNewSection = true;
-	for(var i=0; i<abcTune.lines.length; i++) {
-		var abcLine = abcTune.lines[i];
+  var needNewSection = true;
+  for (var i = 0; i < abcTune.lines.length; i++) {
+    var abcLine = abcTune.lines[i];
 		if (abcLine.staff) {
 			if (needNewSection) {
 				section = {
@@ -138,12 +138,12 @@ EngraverController.prototype.getMeasureWidths = function(abcTune) {
 			}
 			// At this point, the voices are laid out so that the bar lines are even with each other. So we just need to get the placement of the first voice.
 			if (abcLine.staffGroup.voices.length > 0) {
-				var voice = abcLine.staffGroup.voices[0];
-				var foundNotStaffExtra = false;
-				var lastXPosition = 0;
-				for (var k = 0; k < voice.children.length; k++) {
-					var child = voice.children[k];
-					if (!foundNotStaffExtra && !child.isClef && !child.isKeySig) {
+        var voice = abcLine.staffGroup.voices[0];
+        var foundNotStaffExtra = false;
+        var lastXPosition = 0;
+        for (var k = 0; k < voice.children.length; k++) {
+          var child = voice.children[k];
+          if (!foundNotStaffExtra && !child.isClef && !child.isKeySig) {
 						foundNotStaffExtra = true;
 						section.left = child.x;
 						lastXPosition = child.x;
@@ -233,11 +233,11 @@ EngraverController.prototype.engraveTune = function (abcTune, tuneNumber) {
 	this.staffgroups = ret.staffgroups;
 	this.selectables = ret.selectables;
 
-	setupSelection(this);
+	// setupSelection(this);
 };
 
-EngraverController.prototype.getDim = function(historyEl) {
-	// Get the dimensions on demand because the getBBox call is expensive.
+EngraverController.prototype.getDim = function (historyEl) {
+  // Get the dimensions on demand because the getBBox call is expensive.
 	if (!historyEl.dim) {
 		var box = historyEl.svgEl.getBBox();
 		historyEl.dim = { left: Math.round(box.x), top: Math.round(box.y), right: Math.round(box.x+box.width), bottom: Math.round(box.y+box.height) };
@@ -246,7 +246,7 @@ EngraverController.prototype.getDim = function(historyEl) {
 };
 
 EngraverController.prototype.addSelectListener = function (clickListener) {
-	this.listeners[this.listeners.length] = clickListener;
+  this.listeners[this.listeners.length] = clickListener;
 };
 
 module.exports = EngraverController;
