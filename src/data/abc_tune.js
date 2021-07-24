@@ -565,7 +565,8 @@ var Tune = function() {
 	this.setUpAudio = function(options) {
 		if (!options) options = {};
 		var seq = sequence(this, options);
-		return flatten(seq, options, this.formatting.percmap);
+		const { track: trackId } = options;
+		return flatten(trackId == undefined ? seq : [seq[trackId]], options, this.formatting.percmap);
 	};
 	this.deline = function(options) {
 		return delineTune(this.lines, options);

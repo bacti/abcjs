@@ -84,10 +84,7 @@ export const CreateSynth = function () {
     var allNotes = {};
     var cached = [];
     var currentInstrument = instrumentIndexToName[0];
-
-    const { track: trackId } = options.options;
-    const tracks = trackId == undefined ? self.flattened.tracks : [self.flattened.tracks[trackId]];
-    tracks.forEach(function (track) {
+    self.flattened.tracks.forEach(function (track) {
       track.forEach(function (event) {
         if (event.cmd === 'program' && instrumentIndexToName[event.instrument])
           currentInstrument = instrumentIndexToName[event.instrument];
