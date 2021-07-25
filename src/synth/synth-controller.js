@@ -187,6 +187,7 @@ function SynthController() {
         if (self.timer) {
             self.timer.setProgress(0);
             self.midiBuffer.seek(0);
+            self.cursorControl.onSeek && self.cursorControl.onSeek(0);
         }
     };
 
@@ -199,17 +200,17 @@ function SynthController() {
         var percent = (ev.x - background.offsetLeft) / background.offsetWidth;
         if (percent < 0)
             percent = 0;
-        if (percent > 1)
-            percent = 1;
-        self.seek(percent);
-        self.cursorControl.onSeek && self.cursorControl.onSeek(percent);
-        return Promise.resolve({ status: 'ok' });
-      };
+		if (percent > 1)
+			percent = 1;
+		self.seek(percent);
+		return Promise.resolve({status: "ok"});
+	};
 
     self.seek = function (percent, units) {
         if (self.timer && self.midiBuffer) {
             self.timer.setProgress(percent, units);
             self.midiBuffer.seek(percent, units);
+            self.cursorControl.onSeek && self.cursorControl.onSeek(percent);
         }
     };
 
