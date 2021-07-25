@@ -93,6 +93,7 @@ function SynthController() {
                 eventCallback: self.eventCallback,
                 lineEndCallback: self.lineEndCallback,
                 qpm: self.currentTempo,
+                trackId: self.options.track,
 
                 extraMeasuresAtBeginning: self.cursorControl ? self.cursorControl.extraMeasuresAtBeginning : undefined,
                 lineEndAnticipation: self.cursorControl ? self.cursorControl.lineEndAnticipation : 0,

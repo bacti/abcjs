@@ -377,7 +377,7 @@ var Tune = function() {
         return voicesArr;
     };
 
-    this.setupEvents = function(startingDelay, timeDivider, startingBpm, warp) {
+    this.setupEvents = function(startingDelay, timeDivider, startingBpm, warp, trackId) {
         if (!warp) warp = 1;
         var timingEvents = [];
 
@@ -390,6 +390,8 @@ var Tune = function() {
         var voices = this.makeVoicesArray();
         var maxVoiceTimeMilliseconds = 0;
         for (var v = 0; v < voices.length; v++) {
+            if (trackId != undefined && trackId != v)
+                continue;
             var voiceTime = time;
             var voiceTimeMilliseconds = Math.round(voiceTime * 1000);
             var startingRepeatElem = 0;
@@ -521,7 +523,7 @@ var Tune = function() {
         return bpm;
     };
 
-    this.setTiming = function (bpm, measuresOfDelay) {
+    this.setTiming = function (bpm, measuresOfDelay, trackId) {
         measuresOfDelay = measuresOfDelay || 0;
         if (!this.engraver || !this.engraver.staffgroups) {
             console.log("setTiming cannot be called before the tune is drawn.");
@@ -551,7 +553,7 @@ var Tune = function() {
             startingDelay -= this.getPickupLength() / beatLength / beatsPerSecond;
         var timeDivider = beatLength * beatsPerSecond;
 
-        this.noteTimings = this.setupEvents(startingDelay, timeDivider, bpm, warp);
+        this.noteTimings = this.setupEvents(startingDelay, timeDivider, bpm, warp, trackId);
         if (this.noteTimings.length > 0) {
             this.totalTime = this.noteTimings[this.noteTimings.length - 1].milliseconds / 1000;
             this.totalBeats = this.totalTime * beatsPerSecond;

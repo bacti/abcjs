@@ -15,7 +15,7 @@ var TimingCallbacks = function(target, params) {
 	self.joggerTimer = null;
 
 	self.replaceTarget = function(newTarget) {
-		self.noteTimings = newTarget.setTiming(self.qpm, self.extraMeasuresAtBeginning);
+		self.noteTimings = newTarget.setTiming(self.qpm, self.extraMeasuresAtBeginning, params.trackId);
 		if (newTarget.noteTimings.length === 0)
 			newTarget.setTiming(0,0);
 		if (self.lineEndCallback) {
